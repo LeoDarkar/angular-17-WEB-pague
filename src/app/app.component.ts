@@ -1,12 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { Componente2Component } from './componente-2/componente-2.component';
+import { CabeceraComponent } from './cabecera/cabecera.component';
+import { SegundaHojaComponent } from "./segunda-hoja/segunda-hoja.component";
+import { PrimeraHojaComponent } from "./primera-hoja/primera-hoja.component";
+import { TerceraHojaComponent } from "./tercera-hoja/tercera-hoja.component";
+import { CuartaHojaComponent } from "./cuarta-hoja/cuarta-hoja.component";
+import { QuintaHojaComponent } from "./quinta-hoja/quinta-hoja.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, Componente2Component],
+  imports: [CommonModule, RouterOutlet, CabeceraComponent, SegundaHojaComponent, PrimeraHojaComponent, TerceraHojaComponent, CuartaHojaComponent, QuintaHojaComponent],
   templateUrl: './app.component.html', //donde renderiza el html
   styleUrl: './app.component.css' //donde renderiza el css
 })
