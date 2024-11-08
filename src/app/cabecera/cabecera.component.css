@@ -9,7 +9,7 @@ h1 {
   position: fixed;
   top: 0;
   width: 100%;
-  color: var(--nav-text-color);
+  z-index: 1000; /* Asegura que el encabezado esté por encima de otros elementos */
 }
 
 .nav {
@@ -86,4 +86,4 @@ h1 {
   .theme-toggle-container {
     display: flex;
   }
-}    
+}
