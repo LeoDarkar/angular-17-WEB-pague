@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 
+
 export const routes: Routes = [
     {
         path: '',
@@ -7,7 +8,7 @@ export const routes: Routes = [
         children: [
             {
                 path:'sections',
-                loadComponent: () => import('./business/sections/sections.component')
+                loadComponent: () => import('./business/sections/sections.component'),
             },
             {
                 path:'profile',
