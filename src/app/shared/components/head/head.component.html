@@ -1,64 +1,38 @@
-<div class="flex flex-col justify-around gap-6 md:flex-row md:items-center bg-white">
-  <!-- Botón de menú para pantallas pequeñas -->
-  <div class="flex capitalize order-1 md:order-1">
-    <button class="flex items-center p-2.5 text-gray-700 ml:order-1" (click)="onToggleSidebar()">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
-        stroke-width="3" class="h-6 w-auto text-blue-gray-500 mr-2">
-        <path fill-rule="evenodd"
-          d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
-          clip-rule="evenodd"></path>
-      </svg>
-    </button>
-    <!-- Contenedor para imagen y texto centrado -->
-    <div class="flex capitalize order-3 md:order-1 text-gray-700 justify-center items-center">
-      <img class="h-8 w-auto mr-2" src="https://cdn-icons-png.flaticon.com/512/1083/1083799.png" alt="peluches star" />
-      <p class="block antialiased font-sans text-lg leading-none font-medium md:hidden">
-        Peluches Star
-      </p>
-      <!-- Contenedor para texto solo en md -->
-      <p class="hidden md:block antialiased font-sans text-lg leading-none font-medium">
-        PS
-      </p>
+<header class="bg-white shadow">
+  <nav class="mx-auto flex flex-col max-w-7xl items-start justify-between md:flex-row md:items-center p-2 px-2" aria-label="Global">
+    <div class="flex order-1 md:order-1 items-center">
+      <button class=" p-2.5 text-gray-700 " (click)="onToggleSidebar()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+          stroke-width="3" class="h-6 w-auto text-blue-gray-500 mr-2">
+          <path fill-rule="evenodd"
+            d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+            clip-rule="evenodd"></path>
+        </svg>
+      </button>
+      
+        <img class="h-8 w-auto mr-2 md:hidden" src="https://cdn-icons-png.flaticon.com/512/1083/1083799.png" alt="Peluches Star" />
+        <p class="antialiased font-sans text-lg leading-none font-medium md:hidden">
+          Peluches Star
+        </p>
+  
     </div>
-  </div>
 
-  <!-- listado de referencias de pagina-->
-  <div class="capitalize order-2 justify-center justify-items-center">
-    <nav aria-label="breadcrumb" class="w-max">
-      <ol class="flex flex-wrap items-center w-full bg-opacity-60 rounded-md bg-transparent p-0 transition-all">
-        <li
-          class="flex text-blue-gray-900 antialiased font-sans text-sm font-normal leading-normal cursor-pointer transition-colors duration-300 hover:text-light-blue-500">
-          <a [routerLink]="['/sections']" fragment="first-section">
-            <p
-              class="flex text-blue-900 antialiased font-sans text-sm font-normal leading-normal cursor-pointer transition-colors duration-300 hover:text-blue-500">
-              home
-            </p>
-          </a>
-          <span
-            class="text-gray-500 text-sm antialiased font-sans font-normal leading-normal mx-2 pointer-events-none select-none">/</span>
-        </li>
-        <li
-          class="flex text-blue-900 antialiased font-sans text-sm font-normal leading-normal cursor-pointer transition-colors duration-300 hover:text-blue-500">
-          <a [routerLink]="['/sections']" fragment="second-section">
-            <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
-              nosotros
-            </p>
-          </a>
-          <span
-            class="text-gray-500 text-sm antialiased font-sans font-normal leading-normal mx-2 pointer-events-none select-none">/</span>
-        </li>
-        <li
-          class="flex text-blue-900 antialiased font-sans text-sm font-normal leading-normal cursor-pointer transition-colors duration-300 hover:text-blue-500">
-          <a [routerLink]="['/sections']" fragment="third-section">
-            <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal"
-              style="width: 150px">
-              !personalizados¡
-            </p>
-          </a>
-        </li>
-      </ol>
-    </nav>
-  </div>
-  <!-- Contenedor para imagen y texto centrado -->
-  <div class="flex capitalize order-3 sm:order-3 text-gray-700 justify-center items-center"></div>
-</div>
+    <div class="flex flex-wrap gap-x-4 order-2 items-center  bg-opacity-60 bg-transparent md:gap-x-12">
+      <a [routerLink]="['/sections']" fragment="first-section" class="flex text-sm/6 font-semibold text-gray-900">Home</a>
+      <a [routerLink]="['/sections']" fragment="second-section"
+        class="flex text-sm/6 font-semibold text-gray-900">Nosotros</a>
+      <a [routerLink]="['/sections']" fragment="third-section"
+        class="flex text-sm/6 font-semibold text-gray-900">¡Personalizados!</a>
+      <a [routerLink]="['/sections']" fragment="fourth-section" class="flex text-sm/6 font-semibold text-gray-900">Redes
+        Sociales</a>
+    </div>
+
+    <div class="hidden order-1 mr-2 md:order-3 md:block">
+      <a href="#" class="flex items-center -m-1.5 p-1.5">
+        <img class="h-8 w-auto mr-2" src="https://cdn-icons-png.flaticon.com/512/1083/1083799.png" alt="Peluches Star" />
+        <p class="block antialiased text-lg leading-none font-medium">Peluches Star</p>
+      </a>
+    </div>
+    
+  </nav>
+</header>
