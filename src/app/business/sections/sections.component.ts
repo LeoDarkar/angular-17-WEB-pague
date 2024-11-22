@@ -26,5 +26,7 @@ export default class SectionsComponent implements OnInit {
         }
       }
     });
+
+    
   }
 }
