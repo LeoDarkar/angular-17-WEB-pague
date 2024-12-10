@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProvinciasEcService {
-  private apiUrl = 'https://my-json-server.typicode.com/LeoDarkar/ApiProvinciasEcuador'; // Reemplaza con la URL de tu API
+  private apiUrl = 'https://my-json-server.typicode.com/LeoDarkar/ApiProvinciasEcuador'; // URL del API
 
   constructor (private http:HttpClient) { }
 

@@ -15,6 +15,9 @@ export default class Section3Component {
   constructor(private provinciaService: ProvinciasEcService) { }
 
   ngOnInit(): void {
+
+
+    
     this.provinciaService.getProvinciasList().subscribe(data => {
       this.provincias = data;
     });
