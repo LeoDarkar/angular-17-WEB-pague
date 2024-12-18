@@ -1,7 +1,20 @@
 const express = require('express');
-const router = express.Router();
-const emailController = require('../controllers/emailController');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const nodemailer = require('nodemailer');
+require('dotenv').config();
 
-router.post('/send-email', emailController.sendEmail);
+const app = express();
+const port = 3000;
 
-module.exports = router;
+// Middleware
+app.use(cors());
+app.use(bodyParser.json());
+
+// Importar rutas
+const emailRoutes = require('./routes/emailRoutes');
+app.use('/', emailRoutes);
+
+app.listen(port, () => {
+  console.log(`Servidor corriendo en http://localhost:${port}`);
+});
