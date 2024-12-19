@@ -1,35 +1,49 @@
+const { request, response } = require('express');
 const nodemailer = require('nodemailer');
 
-exports.sendEmail = (req, res) => {
-  const { nombre, apellido, email, numeroTelefono, provincia, ciudad, direccion, asunto } = req.body;
 
-  const transporter = nodemailer.createTransport({
+const envioCorreo = (req= request, resp= response) => {
+  let body = req.body;
+  
+  let config = nodemailer.createTransport({
     service: 'gmail',
+    post: 587,
     auth: {
-      user: 'tu-email@gmail.com',
-      pass: 'tu-contraseña'
+      user: 'leyundavid@gmail.com',
+      pass: 'iruf rkni ooca uypd'
     }
   });
 
   const mailOptions = {
-    from: 'tu-email@gmail.com',
+    from: 'Peluches Star',
     to: 'leyundavid@gmail.com',
-    subject: 'Nuevo formulario enviado',
+    subject: 'Nuevo formulario peluches personalizados',
     text: `
-      Nombre: ${nombre} ${apellido}
-      Correo Electrónico: ${email}
-      Provincia: ${provincia}
-      Ciudad: ${ciudad}
-      Teléfono: ${numeroTelefono}
-      Dirección: ${direccion}
-      Asunto: ${asunto}
+      Nombre: ${body.nombre} ${body.apellido}
+      Correo Electrónico: ${body.email}
+      Provincia: ${body.provincia}
+      Ciudad: ${body.ciudad}
+      Teléfono: ${body.numeroTelefono}
+      Dirección: ${body.direccion}
+      Asunto: ${body.asunto}
     `
   };
 
-  transporter.sendMail(mailOptions, (error, info) => {
+  config.sendMail(mailOptions, function(error, result) {
     if (error) {
-      return res.status(500).send(error.toString());
+      return resp.json({
+        ok:false,
+        msg:error
+      });
     }
-    res.send('Correo enviado: ' + info.response);
+    resp.json({
+      ok:true,
+      msg:result
+    });
   });
+  
 };
+
+module.exports = {
+  envioCorreo
+}

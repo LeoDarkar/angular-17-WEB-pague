@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ProvinciasEcService } from '../../../core/services/provincias-ec.service';
-import { FormBuilder, FormGroup, ReactiveFormsModule, FormControl } from '@angular/forms';
-import { NgFor } from '@angular/common';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { CorreoService } from '../../../core/services/correo.service';
+import { NgForOf } from '@angular/common';
 
 @Component({
   selector: 'app-section3',
   standalone: true,
-  imports: [ReactiveFormsModule, NgFor],
+  imports: [ReactiveFormsModule, NgForOf],
   templateUrl: './section3.component.html',
   styleUrl: './section3.component.css'
 })
@@ -17,33 +16,46 @@ export default class Section3Component implements OnInit {
   datos:FormGroup; 
 
   constructor(private provinciaService: ProvinciasEcService, // Inyecta el servicio de provincias 
-              private fb: FormBuilder, 
-              private httpclient: HttpClient,
-              private correoService: CorreoService // Inyecta el servicio correo
+              private httpClient: HttpClient
             ) {
-              this.datos = this.fb.group({
-                nombre: [''],
-                apellido: [''],
-                email: [''],
-                numeroTelefono: [''],
-                provincia: [''],
-                ciudad: [''],
-                direccion: [''],
-                asunto: [''],
+              this.datos = new FormGroup({
+                nombre: new FormControl('', Validators.required),
+                apellido:  new FormControl(''),
+                email:  new FormControl('', Validators.required),
+                numeroTelefono:  new FormControl('', Validators.required),
+                provincia:  new FormControl(''),
+                ciudad:  new FormControl(''),
+                direccion:  new FormControl('', Validators.required),
+                asunto:  new FormControl('', Validators.required),
               });
 
   }
-
   ngOnInit(): void {
-    this.provinciaService.getProvinciasList().subscribe(data => {
-      this.provincias = data;
-    });
+    try {
+      this.provinciaService.getProvinciasList().subscribe(data => {
+        this.provincias = data;
+        console.log(this.provincias); // Verifica que los datos se están recibiendo
+        console.log('Provincias:', this.provincias); // Verifica que los datos se están recibiendo
+      });
+    } catch (error) {console.error('Error al obtener las provincias', error); }
+
+    }
+  envioCorreo() {
+    let params = {
+      nombre: this.datos.value.nombre,
+      apellido: this.datos.value.apellido,
+      email: this.datos.value.email,
+      numeroTelefono: this.datos.value.numeroTelefono,
+      provincia: this.datos.value.provincia,
+      ciudad: this.datos.value.ciudad,
+      direccion: this.datos.value.direccion,
+      asunto: this.datos.value.asunto,
+    }
+    console.log(params);
+    this.httpClient.post('http://localhost:3000/envio', params).subscribe(res => {
+    console.log(res);
+   });
   }
 
-  onSubmit() {
-    this.correoService.enviarCorreo(this.datos.value).subscribe((data) => {
-      console.log(data);
-  });
-  }
 }
 

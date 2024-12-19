@@ -11,7 +11,7 @@
           en crear momentos especiales con nuestros productos únicos.</p>
         <h2 class="text-xl  font-semibold text-indigo-600">Llena el siguiente formulario para hacer tu solicitud</h2>
         
-        <form [formGroup]="datos" (ngSubmit)="onSubmit()">
+        <form [formGroup]="datos" (ngSubmit)="envioCorreo()">
           <div class="border-b border-gray-900/10 pb-12">
             <h2 class="text-base/7 font-semibold text-gray-900">Información Personal</h2>
             <p class="mt-1 text-sm/6 text-gray-600">Ayudanos con tus datos y tu solicitud lo mas completa que se puedas
@@ -39,7 +39,7 @@
               <div class="sm:col-span-3">
                 <label for="email" class="block text-sm/6 font-medium text-gray-900">Correo Electronico</label>
                 <div class="mt-2">
-                  <input id="email" name="email" type="email" autocomplete="email"
+                  <input id="email" name="email" type="email" autocomplete="email" formControlName="email"
                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
                     placeholder=" textoejemplo@gmail.com">
                 </div>
@@ -58,7 +58,7 @@
                   <select id="country" name="country" autocomplete="country-name" formControlName="provincia"
                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm/6">
                     <option value="" disabled selected>Seleccione una provincia</option>
-                    <option *ngFor="let provincia of provincias" [value]="provincia.id">{{ provincia.admin_name }}</option>
+                    <option *ngFor="let provincia of provincias" [value]="provincia.admin_name">{{ provincia.admin_name }}</option>
                   </select>
                 </div>
               </div>
